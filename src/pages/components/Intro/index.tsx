@@ -1,10 +1,19 @@
-import { IntroContainer, IntroContent } from "./styles"
+import { IntroContainer, IntroContent, IntroTitle } from "./styles"
+import  IntroImg  from "../../../assets/IntoImg.png"
 
 function Intro() {
   return(
     <IntroContainer>
       <IntroContent className="container">
-        <p>Caralhoooooo</p>
+        <div>
+          <section>
+            <IntroTitle size="xl">
+              Encontre o café perfeito para qualquer hora do dia
+            </IntroTitle>
+          </section>
+        </div>
+
+        <img src={IntroImg} />
       </IntroContent>
     </IntroContainer>
   )
