@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import IntroBackground from "../../../assets/Background.png"
 import { rgba } from "polished"
-import { TitleText } from "../Typograph";
+import { TitleText } from "../../../components/Typograph";
 
 export const IntroContainer = styled.section`
   display: flex;
