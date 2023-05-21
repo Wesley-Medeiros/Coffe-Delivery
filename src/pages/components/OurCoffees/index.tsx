@@ -1,4 +1,4 @@
-import { coffees } from "../../../Data/Coffee"
+import { coffees } from "../../../Data/coffee"
 import { TitleText } from "../../../components/Typograph"
 import CoffeeCard from "../CoffeeCard"
 import { CoffeeList, OurCoffeesContainer } from "./styles"
