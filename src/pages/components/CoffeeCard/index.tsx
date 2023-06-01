@@ -20,7 +20,7 @@ interface CoffeeProps {
 }
 
 function CoffeeCard({ coffee }: CoffeeProps) {
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   function handleIncrease() {
     setQuantity(state => state + 1)
