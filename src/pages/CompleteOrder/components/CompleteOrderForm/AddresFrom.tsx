@@ -39,6 +39,7 @@ function AddresForm() {
        className="complement"
        {...register("complement")}
        error={errors.complement?.message}
+       rightText="Opcional"
        />
       <Input placeholder="Bairro"
       {...register("district")}

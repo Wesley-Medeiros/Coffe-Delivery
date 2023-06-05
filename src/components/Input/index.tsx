@@ -1,16 +1,20 @@
 import { RegularText } from "../Typograph";
-import { InputStyleContainer, InputWrapper } from "./styles"
+import { InputStyleContainer, InputStyled, InputWrapper, RightText } from "./styles"
 import { InputHTMLAttributes, forwardRef } from "react"
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
+  rightText?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ error, className,...props }, ref) => {
+  ({ error, className, rightText,...props }, ref) => {
     return(
       <InputWrapper className={className}>
-        <InputStyleContainer {...props} ref={ref} /> 
+        <InputStyleContainer hasError={!!error}>
+          <InputStyled {...props} ref={ref} />
+          {rightText && <RightText>{rightText}</RightText>}
+        </InputStyleContainer> 
         {error && <RegularText size="s">{error}</RegularText>}
       </InputWrapper>
     )
