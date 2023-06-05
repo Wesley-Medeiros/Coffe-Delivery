@@ -1,12 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { RegularText, TitleText } from "../../components/Typograph"
 import { OrderConfirmedContainer, OrderDatailsContainer } from "./styles"
 import OrderConfirmedImg from "../../assets/ConfirmedOrder.svg"
 import InfoWithIcon from "../../components/InfoWithIcon"
 import { MapPin, Clock, CurrencyDollar } from "phosphor-react"
 import { useTheme } from "styled-components"
+import { useLocation, useNavigate } from "react-router-dom"
+import { OrderData } from "../CompleteOrder"
+import { paymentMethods } from "../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions"
+import { useEffect } from "react"
+
+interface LocationType {
+  state: OrderData,
+}
 
 function OrderConfirmed() {
   const { colors } = useTheme();
+
+  const { state } = useLocation() as unknown as LocationType;
+
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if(!state) {
+      navigate("/")
+    }
+  }, [])
+
+  if(!state) return <></>
 
   return(
     <OrderConfirmedContainer className="container">
@@ -22,9 +43,9 @@ function OrderConfirmed() {
           iconBg={colors["brand-purple"]}
           text={
             <RegularText>
-              Entrega em <strong>Avenida Ulisses Montarroyos, 5034</strong>
+              Entrega em <strong>{state.street}, {state.number}</strong>
               <br />
-              Candeias - Pernambuco, NE
+              {state.district} - {state.city}, {state.uf}
             </RegularText>
           }
         />
@@ -48,7 +69,7 @@ function OrderConfirmed() {
             <RegularText>
               Pagamento na entegra
               <br />
-              <strong>Cartão de crédito</strong>
+              <strong>{paymentMethods[state.paymentMethod].label}</strong>
             </RegularText>
           }
         />
